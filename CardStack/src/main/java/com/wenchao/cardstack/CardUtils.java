@@ -10,6 +10,8 @@ public class CardUtils {
     final static int DIRECTION_TOP_RIGHT = 1;
     final static int DIRECTION_BOTTOM_LEFT = 2;
     final static int DIRECTION_BOTTOM_RIGHT = 3;
+    final static int STRAIGHT_LEFT_DIRECTION = 4;
+    final static int STRAIGHT_RIGHT_DIRECTION = 5;
 
     public static void scale(View v, int pixel){
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)v.getLayoutParams();

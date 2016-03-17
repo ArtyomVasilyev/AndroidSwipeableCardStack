@@ -25,10 +25,6 @@ public class MyActivity extends Activity {
 
         mCardAdapter = new CardsDataAdapter(getApplicationContext());
         mCardAdapter.add("test1");
-        mCardAdapter.add("test2");
-        mCardAdapter.add("test3");
-        mCardAdapter.add("test4");
-        mCardAdapter.add("test5");
 
         mCardStack.setAdapter(mCardAdapter);
 

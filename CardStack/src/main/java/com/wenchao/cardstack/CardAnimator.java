@@ -2,7 +2,6 @@ package com.wenchao.cardstack;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Random;
 
 import com.wenchao.animation.RelativeLayoutParamsEvaluator;
 
@@ -11,7 +10,6 @@ import android.animation.Animator.AnimatorListener;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ValueAnimator;
-import android.graphics.Color;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,12 +21,13 @@ import static com.wenchao.cardstack.CardUtils.*;
 
 public class CardAnimator{
     private static final String DEBUG_TAG = "CardAnimator";
-    private static final int REMOTE_DISTANCE = 1000;
+    private static final int REMOTE_DISTANCE_X = 10000;
+    private static final int REMOTE_DISTANCE_Y = 1000;
     private int mBackgroundColor;
     public ArrayList<View> mCardCollection;
     private float mRotation;
     private HashMap<View,RelativeLayout.LayoutParams> mLayoutsMap;
-    private RelativeLayout.LayoutParams[] mRemoteLayouts = new RelativeLayout.LayoutParams[4];
+    private RelativeLayout.LayoutParams[] mRemoteLayouts = new RelativeLayout.LayoutParams[6];
     private RelativeLayout.LayoutParams baseLayout;
     private int mStackMargin=20;
 
@@ -88,10 +87,12 @@ public class CardAnimator{
 
     private void setupRemotes(){
         View topView = getTopView();
-        mRemoteLayouts[0] = getMoveParams(topView, REMOTE_DISTANCE, -REMOTE_DISTANCE);
-        mRemoteLayouts[1] = getMoveParams(topView, REMOTE_DISTANCE, REMOTE_DISTANCE);
-        mRemoteLayouts[2] = getMoveParams(topView, -REMOTE_DISTANCE, -REMOTE_DISTANCE);
-        mRemoteLayouts[3] = getMoveParams(topView, -REMOTE_DISTANCE, REMOTE_DISTANCE);
+        mRemoteLayouts[0] = getMoveParams(topView, REMOTE_DISTANCE_Y, -REMOTE_DISTANCE_X);
+        mRemoteLayouts[1] = getMoveParams(topView, REMOTE_DISTANCE_Y, REMOTE_DISTANCE_X);
+        mRemoteLayouts[2] = getMoveParams(topView, -REMOTE_DISTANCE_Y, -REMOTE_DISTANCE_X);
+        mRemoteLayouts[3] = getMoveParams(topView, -REMOTE_DISTANCE_Y, REMOTE_DISTANCE_X);
+        mRemoteLayouts[4] = getMoveParams(topView, 0, -REMOTE_DISTANCE_X);
+        mRemoteLayouts[5] = getMoveParams(topView, 0, REMOTE_DISTANCE_X);
 
     }
 
@@ -147,7 +148,7 @@ public class CardAnimator{
             }
         });
 
-        discardAnim.setDuration(250);
+        discardAnim.setDuration(2500);
         aCollection.add(discardAnim);
 
         for(int i = 0; i< mCardCollection.size();i++){
@@ -229,12 +230,12 @@ public class CardAnimator{
 
         View topView =  getTopView();
 
-        float rotation_coefficient = 20f;
+        float rotation_coefficient = 50f;
 
         RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) topView.getLayoutParams();
         RelativeLayout.LayoutParams topViewLayouts = mLayoutsMap.get(topView);
         int x_diff = (int)((e2.getRawX()-e1.getRawX()));
-        int y_diff = (int)((e2.getRawY()-e1.getRawY()));
+        int y_diff = 0;
 
         layoutParams.leftMargin  = topViewLayouts.leftMargin+ x_diff;
         layoutParams.rightMargin = topViewLayouts.rightMargin - x_diff;
