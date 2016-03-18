@@ -27,7 +27,7 @@ public class CardStack extends RelativeLayout {
     public static final int STRAIGHT_RIGHT_DIRECTION = 5;
     private int mColor = -1;
     private int mIndex = 0;
-    private int mNumVisible = 6;
+    private int mNumVisible = 1;
     private ArrayAdapter<?> mAdapter;
     private OnTouchListener mOnTouchListener;
     private CardAnimator mCardAnimator;
@@ -149,9 +149,9 @@ public class CardStack extends RelativeLayout {
             public boolean onDragContinue(MotionEvent e1, MotionEvent e2,
                                        float distanceX, float distanceY) {
                 float x1 = e1.getRawX();
-                float y1 = e1.getRawY();
+                float y1 = 0;
                 float x2 = e2.getRawX();
-                float y2 = e2.getRawY();
+                float y2 = 0;
                 //float distance = CardUtils.distance(x1,y1,x2,y2);
                 final int direction = CardUtils.direction(x1,y1,x2,y2);
                 mCardAnimator.drag(e1,e2,distanceX,distanceY);
@@ -163,9 +163,9 @@ public class CardStack extends RelativeLayout {
             public  boolean onDragEnd(MotionEvent e1, MotionEvent e2) {
                 //reverse(e1,e2);
                 float x1 = e1.getRawX();
-                float y1 = e1.getRawY();
+                float y1 = 0;
                 float x2 = e2.getRawX();
-                float y2 = e2.getRawY();
+                float y2 = 0;
                 float distance = CardUtils.distance(x1,y1,x2,y2);
                 final int direction = CardUtils.direction(x1,y1,x2,y2);
 

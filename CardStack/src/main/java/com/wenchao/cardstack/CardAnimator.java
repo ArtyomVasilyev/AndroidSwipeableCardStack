@@ -21,7 +21,7 @@ import static com.wenchao.cardstack.CardUtils.*;
 
 public class CardAnimator{
     private static final String DEBUG_TAG = "CardAnimator";
-    private static final int REMOTE_DISTANCE_X = 10000;
+    private static final int REMOTE_DISTANCE_X = 1000;
     private static final int REMOTE_DISTANCE_Y = 1000;
     private int mBackgroundColor;
     public ArrayList<View> mCardCollection;
@@ -148,7 +148,7 @@ public class CardAnimator{
             }
         });
 
-        discardAnim.setDuration(2500);
+        discardAnim.setDuration(400);
         aCollection.add(discardAnim);
 
         for(int i = 0; i< mCardCollection.size();i++){
