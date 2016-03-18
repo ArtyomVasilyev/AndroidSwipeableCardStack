@@ -6,12 +6,6 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 
 public class CardUtils {
-    final static int DIRECTION_TOP_LEFT = 0;
-    final static int DIRECTION_TOP_RIGHT = 1;
-    final static int DIRECTION_BOTTOM_LEFT = 2;
-    final static int DIRECTION_BOTTOM_RIGHT = 3;
-    final static int STRAIGHT_LEFT_DIRECTION = 4;
-    final static int STRAIGHT_RIGHT_DIRECTION = 5;
 
     public static void scale(View v, int pixel){
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)v.getLayoutParams();
@@ -86,16 +80,20 @@ public class CardUtils {
 
     public static int direction(float x1, float y1, float x2, float y2) {
         if(x2>x1){//RIGHT
-            if(y2>y1){//BOTTOM
-                return DIRECTION_BOTTOM_RIGHT;
+            if(y2 == y1){
+                return CardStack.STRAIGHT_RIGHT_DIRECTION;
+            }else if(y2>y1){//BOTTOM
+                return CardStack.BOTTOM_RIGHT_DIRECTION;
             }else{//TOP
-                return DIRECTION_TOP_RIGHT;
+                return CardStack.TOP_RIGHT_DIRECTION;
             }
         }else{//LEFT
-            if(y2>y1){//BOTTOM
-                return DIRECTION_BOTTOM_LEFT;
+            if (y2 == y1){
+                return CardStack.STRAIGHT_LEFT_DIRECTION;
+            }else if(y2>y1){//BOTTOM
+                return CardStack.BOTTOM_LEFT_DIRECTION;
             }else{//TOP
-                return DIRECTION_TOP_LEFT;
+                return CardStack.TOP_LEFT_DIRECTION;
             }
         }
     }

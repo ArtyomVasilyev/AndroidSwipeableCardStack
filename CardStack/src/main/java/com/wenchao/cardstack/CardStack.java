@@ -19,9 +19,15 @@ import android.database.DataSetObserver;
 
 
 public class CardStack extends RelativeLayout {
+    public static final int TOP_LEFT_DIRECTION = 0;
+    public static final int TOP_RIGHT_DIRECTION = 1;
+    public static final int BOTTOM_LEFT_DIRECTION = 2;
+    public static final int BOTTOM_RIGHT_DIRECTION = 3;
+    public static final int STRAIGHT_LEFT_DIRECTION = 4;
+    public static final int STRAIGHT_RIGHT_DIRECTION = 5;
     private int mColor = -1;
     private int mIndex = 0;
-    private int mNumVisible = 4;
+    private int mNumVisible = 6;
     private ArrayAdapter<?> mAdapter;
     private OnTouchListener mOnTouchListener;
     private CardAnimator mCardAnimator;
@@ -36,7 +42,7 @@ public class CardStack extends RelativeLayout {
     public interface CardEventListener{
         //section
         // 0 | 1
-        //--------
+        //-4---5--
         // 2 | 3
         // swipe distance, most likely be used with height and width of a view ;
 
