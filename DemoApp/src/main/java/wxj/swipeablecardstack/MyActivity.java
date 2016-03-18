@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.wenchao.cardstack.CardStack;
 
@@ -31,6 +33,23 @@ public class MyActivity extends Activity {
         if(mCardStack.getAdapter() != null) {
             Log.i("MyActivity", "Card Stack size: " + mCardStack.getAdapter().getCount());
         }
+
+        Button buttonRight = (Button)findViewById(R.id.button_right);
+        buttonRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    mCardStack.discardTop(CardStack.STRAIGHT_RIGHT_DIRECTION);
+            }
+        });
+
+        Button buttonLeft = (Button)findViewById(R.id.button_left);
+        buttonLeft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mCardStack.discardTop(CardStack.STRAIGHT_LEFT_DIRECTION);
+            }
+        });
+
     }
 
 
